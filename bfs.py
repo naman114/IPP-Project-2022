@@ -39,7 +39,6 @@ def bfs():
         curY = DEST_COL
 
         while (curX != SOURCE_ROW or curY != SOURCE_COL):
-            dxy = [-1, 0, 1, 0, -1]
 
             for i in range(4):
                 tx = curX + dxy[i]

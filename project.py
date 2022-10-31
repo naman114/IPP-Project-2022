@@ -1,5 +1,6 @@
 from constants import *
 from bfs import bfs
+from dfs import dfs
 
 
 def scaleUp(side):
@@ -65,7 +66,8 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_a:
                     path = bfs()
-
+                elif event.key == pygame.K_b:
+                    path = dfs()
                 else:
                     pygame.quit()
                     sys.exit()
