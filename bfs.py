@@ -6,12 +6,11 @@ def bfs():
     bfsQueue.append([SOURCE_ROW, SOURCE_COL])
     distanceFromSrc = []
     finalPath = []
-    inf = 100000
 
     for i in range(TOTAL_ROWS):
         tempRow = []
         for j in range(TOTAL_COLS):
-            tempRow.append(inf)
+            tempRow.append(INF)
         distanceFromSrc.append(tempRow)
     distanceFromSrc[SOURCE_ROW][SOURCE_COL] = 0
 
@@ -29,11 +28,11 @@ def bfs():
             tx = row + dxy[i]
             ty = col + dxy[i + 1]
 
-            if not(tx < 0 or tx >= TOTAL_ROWS or ty < 0 or ty >= TOTAL_COLS or distanceFromSrc[tx][ty] != inf or BLOCKED_CELLS[tx][ty] == 1):
+            if not(tx < 0 or tx >= TOTAL_ROWS or ty < 0 or ty >= TOTAL_COLS or distanceFromSrc[tx][ty] != INF or BLOCKED_CELLS[tx][ty] == 1):
                 bfsQueue.append([tx, ty])
                 distanceFromSrc[tx][ty] = distanceFromSrc[row][col] + 1
 
-    if distanceFromSrc[DEST_ROW][DEST_COL] != inf:
+    if distanceFromSrc[DEST_ROW][DEST_COL] != INF:
         finalPath = [[DEST_ROW, DEST_COL]]
         curX = DEST_ROW
         curY = DEST_COL
@@ -55,5 +54,5 @@ def bfs():
     if(len(finalPath) != 0):
         finalPath.pop(0)
         finalPath.pop(-1)
-        
+
     return finalPath
