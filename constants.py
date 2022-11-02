@@ -20,6 +20,6 @@ DEST_COL = 24
 TOTAL_ROWS = WINDOW_HEIGHT//BLOCKSIZE
 TOTAL_COLS = WINDOW_WIDTH//BLOCKSIZE
 SCREEN = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
-BLOCKED_CELLS = np.zeros((TOTAL_ROWS, TOTAL_COLS), dtype=int)
-BOMB_CELLS = np.zeros((TOTAL_ROWS, TOTAL_COLS), dtype=int)
+blocked_cells = np.zeros((TOTAL_ROWS, TOTAL_COLS), dtype=int)
+bomb_cells = np.zeros((TOTAL_ROWS, TOTAL_COLS), dtype=int)
 SPEED = 60

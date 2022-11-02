@@ -29,15 +29,16 @@ def main():
                 if pygame.mouse.get_pressed()[0]:
                     pygame.draw.rect(
                         SCREEN, BLACK, (x, y, BLOCKSIZE, BLOCKSIZE), 0)
-                    BLOCKED_CELLS[scaleDown(x)][scaleDown(y)] = 1
-                    BOMB_CELLS[scaleDown(x)][scaleDown(y)] = 0
+                    blocked_cells[scaleDown(x)][scaleDown(y)] = 1
+                    bomb_cells[scaleDown(x)][scaleDown(y)] = 0
                 elif pygame.mouse.get_pressed()[2]:
                     pygame.draw.rect(
                         SCREEN, PURPLE, (x, y, BLOCKSIZE, BLOCKSIZE), 0)
-                    BLOCKED_CELLS[scaleDown(x)][scaleDown(y)] = 0
-                    BOMB_CELLS[scaleDown(x)][scaleDown(y)] = 1
+                    blocked_cells[scaleDown(x)][scaleDown(y)] = 0
+                    bomb_cells[scaleDown(x)][scaleDown(y)] = 1
 
             if event.type == pygame.KEYDOWN:
+                path = []
                 if event.key == pygame.K_a:
                     path = bfs()
                 elif event.key == pygame.K_b:
@@ -46,6 +47,13 @@ def main():
                     path = dijkstra()
                 elif event.key == pygame.K_d:
                     path = astar()
+                elif event.key == pygame.K_r:
+                    SCREEN.fill(WHITE)
+                    drawGrid()
+                    createScaledRect(SOURCE_ROW, SOURCE_COL, GREEN)
+                    createScaledRect(DEST_ROW, DEST_COL, RED)
+                    blocked_cells.fill(0)
+                    bomb_cells.fill(0)
                 else:
                     pygame.quit()
                     sys.exit()

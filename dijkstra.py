@@ -30,7 +30,7 @@ def dijkstra():
             break
         
         if (row != SOURCE_ROW or col != SOURCE_COL):
-            if not BOMB_CELLS[row][col]:
+            if not bomb_cells[row][col]:
                 paintCell(row, col, BLUE)
 
         dxy = [-1, 0, 1, 0, -1]
@@ -39,9 +39,9 @@ def dijkstra():
             tx = row + dxy[i]
             ty = col + dxy[i + 1]
 
-            if(not(tx < 0 or tx >= TOTAL_ROWS or ty < 0 or ty >= TOTAL_COLS or visited[tx][ty] or BLOCKED_CELLS[tx][ty])):
+            if(not(tx < 0 or tx >= TOTAL_ROWS or ty < 0 or ty >= TOTAL_COLS or visited[tx][ty] or blocked_cells[tx][ty])):
                     targetCellWeight = 1
-                    if BOMB_CELLS[tx][ty]:
+                    if bomb_cells[tx][ty]:
                         targetCellWeight = 10
                     
                     if (distance[tx][ty] > distance[row][col] + targetCellWeight):

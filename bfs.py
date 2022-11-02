@@ -31,7 +31,7 @@ def bfs():
             tx = row + dxy[i]
             ty = col + dxy[i + 1]
 
-            if not(tx < 0 or tx >= TOTAL_ROWS or ty < 0 or ty >= TOTAL_COLS or distanceFromSrc[tx][ty] != INF or BLOCKED_CELLS[tx][ty] == 1):
+            if not(tx < 0 or tx >= TOTAL_ROWS or ty < 0 or ty >= TOTAL_COLS or distanceFromSrc[tx][ty] != INF or blocked_cells[tx][ty] == 1):
                 bfsQueue.append([tx, ty])
                 distanceFromSrc[tx][ty] = distanceFromSrc[row][col] + 1
 
@@ -46,7 +46,7 @@ def bfs():
                 tx = curX + dxy[i]
                 ty = curY + dxy[i + 1]
 
-                if not(tx < 0 or tx >= TOTAL_ROWS or ty < 0 or ty >= TOTAL_COLS or distanceFromSrc[tx][ty] != distanceFromSrc[curX][curY] - 1 or BLOCKED_CELLS[tx][ty] == 1):
+                if not(tx < 0 or tx >= TOTAL_ROWS or ty < 0 or ty >= TOTAL_COLS or distanceFromSrc[tx][ty] != distanceFromSrc[curX][curY] - 1 or blocked_cells[tx][ty] == 1):
                     finalPath.append([tx, ty])
                     curX = tx
                     curY = ty

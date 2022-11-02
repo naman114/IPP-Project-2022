@@ -21,7 +21,7 @@ def pathFinder(row, col, dist):
     for i in range(4):
         x = row + dxy[i]
         y = col + dxy[i+1]
-        if not(x < 0 or y < 0 or x >= TOTAL_ROWS or y >= TOTAL_COLS or BLOCKED_CELLS[x][y] == 1 or flag == True or distanceFromSrc[x][y] != INF):
+        if not(x < 0 or y < 0 or x >= TOTAL_ROWS or y >= TOTAL_COLS or blocked_cells[x][y] == 1 or flag == True or distanceFromSrc[x][y] != INF):
             pathFinder(x, y, dist + 1)
 
 
@@ -46,7 +46,7 @@ def dfs():
                 tx = currX + dxy[i]
                 ty = currY + dxy[i + 1]
 
-                if not(tx < 0 or tx >= TOTAL_ROWS or ty < 0 or ty >= TOTAL_COLS or distanceFromSrc[tx][ty] != distanceFromSrc[currX][currY] - 1 or BLOCKED_CELLS[tx][ty] == 1):
+                if not(tx < 0 or tx >= TOTAL_ROWS or ty < 0 or ty >= TOTAL_COLS or distanceFromSrc[tx][ty] != distanceFromSrc[currX][currY] - 1 or blocked_cells[tx][ty] == 1):
                     finalPath.append([tx, ty])
                     currX = tx
                     currY = ty

@@ -36,7 +36,7 @@ def astar():
             break
         
         if (row != SOURCE_ROW or col != SOURCE_COL):
-            if not BOMB_CELLS[row][col]:
+            if not bomb_cells[row][col]:
                 paintCell(row, col, BLUE)
 
         dxy = [-1, 0, 1, 0, -1]
@@ -45,7 +45,7 @@ def astar():
             tx = row + dxy[i]
             ty = col + dxy[i + 1]
 
-            if(not(tx < 0 or tx >= TOTAL_ROWS or ty < 0 or ty >= TOTAL_COLS or visited[tx][ty] or BLOCKED_CELLS[tx][ty])):
+            if(not(tx < 0 or tx >= TOTAL_ROWS or ty < 0 or ty >= TOTAL_COLS or visited[tx][ty] or blocked_cells[tx][ty])):
                     g_cost = abs(SOURCE_ROW - tx) + abs(SOURCE_COL - ty)
                     dist_to_nbr = g_cost + 1
 
