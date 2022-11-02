@@ -35,13 +35,13 @@ def drawGrid():
             rect = pygame.Rect(x, y, BLOCKSIZE, BLOCKSIZE)
             pygame.draw.rect(SCREEN, BLACK, rect, 1)
 
+
 def main():
     pygame.init()
     SCREEN.fill(WHITE)
     pygame.display.set_caption("PathFinder")
 
     while True:
-        print("Running")
         drawGrid()
         createScaledRect(SOURCE_ROW, SOURCE_COL, GREEN)
         createScaledRect(DEST_ROW, DEST_COL, RED)
