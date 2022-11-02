@@ -1,6 +1,7 @@
 from constants import *
 from bfs import bfs
 from dfs import dfs
+from dijkstra import dijkstra
 
 
 def scaleUp(side):
@@ -21,9 +22,6 @@ def createPath(path):
     if len(path) == 0:
         return
 
-    path.pop(0)
-    path.pop(-1)
-
     for cell in path:
         createScaledRect(cell[0], cell[1], YELLOW)
         pygame.display.update()
@@ -36,13 +34,13 @@ def drawGrid():
             rect = pygame.Rect(x, y, BLOCKSIZE, BLOCKSIZE)
             pygame.draw.rect(SCREEN, BLACK, rect, 1)
 
-
 def main():
     pygame.init()
     SCREEN.fill(WHITE)
     pygame.display.set_caption("PathFinder")
 
     while True:
+        print("Running")
         drawGrid()
         createScaledRect(SOURCE_ROW, SOURCE_COL, GREEN)
         createScaledRect(DEST_ROW, DEST_COL, RED)
@@ -62,12 +60,20 @@ def main():
                     pygame.draw.rect(
                         SCREEN, BLACK, (x, y, BLOCKSIZE, BLOCKSIZE), 0)
                     BLOCKED_CELLS[scaleDown(x)][scaleDown(y)] = 1
+                    BOMB_CELLS[scaleDown(x)][scaleDown(y)] = 0
+                elif pygame.mouse.get_pressed()[2]:
+                    pygame.draw.rect(
+                        SCREEN, PURPLE, (x, y, BLOCKSIZE, BLOCKSIZE), 0)
+                    BLOCKED_CELLS[scaleDown(x)][scaleDown(y)] = 0
+                    BOMB_CELLS[scaleDown(x)][scaleDown(y)] = 1
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_a:
                     path = bfs()
                 elif event.key == pygame.K_b:
                     path = dfs()
+                elif event.key == pygame.K_c:
+                    path = dijkstra()
                 else:
                     pygame.quit()
                     sys.exit()
