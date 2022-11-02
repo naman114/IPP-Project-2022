@@ -1,5 +1,5 @@
 from constants import *
-
+from utils import paintCell
 
 def bfs():
     bfsQueue = []
@@ -21,6 +21,9 @@ def bfs():
 
         if (row == DEST_ROW and col == DEST_COL):
             break
+        
+        if (row != SOURCE_ROW or col != SOURCE_COL):
+            paintCell(row, col, BLUE)
 
         dxy = [-1, 0, 1, 0, -1]
 
