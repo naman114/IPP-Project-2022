@@ -2,6 +2,7 @@ from constants import *
 from bfs import bfs
 from dfs import dfs
 from dijkstra import dijkstra
+from astar import astar
 
 
 def scaleUp(side):
@@ -74,6 +75,8 @@ def main():
                     path = dfs()
                 elif event.key == pygame.K_c:
                     path = dijkstra()
+                elif event.key == pygame.K_d:
+                    path = astar()
                 else:
                     pygame.quit()
                     sys.exit()
