@@ -1,4 +1,5 @@
 from constants import *
+from utils import paintCell
 
 distanceFromSrc = []
 flag = False
@@ -13,6 +14,10 @@ def pathFinder(row, col, dist):
         return
 
     distanceFromSrc[row][col] = dist
+
+    if (row != SOURCE_ROW or col != SOURCE_COL):
+        paintCell(row, col, BLUE)
+
     for i in range(4):
         x = row + dxy[i]
         y = col + dxy[i+1]

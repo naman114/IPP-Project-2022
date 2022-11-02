@@ -1,5 +1,6 @@
 from constants import *
 from queue import PriorityQueue
+from utils import paintCell
 
 def astar():
     pq = PriorityQueue()
@@ -34,6 +35,10 @@ def astar():
         if(row == DEST_ROW and col == DEST_COL):
             break
         
+        if (row != SOURCE_ROW or col != SOURCE_COL):
+            if not BOMB_CELLS[row][col]:
+                paintCell(row, col, BLUE)
+
         dxy = [-1, 0, 1, 0, -1]
 
         for i in range(4):
