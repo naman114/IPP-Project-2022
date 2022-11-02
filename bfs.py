@@ -51,4 +51,9 @@ def bfs():
                     break
 
     finalPath.reverse()
+
+    if(len(finalPath) != 0):
+        finalPath.pop(0)
+        finalPath.pop(-1)
+        
     return finalPath
