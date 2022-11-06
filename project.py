@@ -41,6 +41,7 @@ def main():
                 path = []
                 if event.key == pygame.K_a:
                     path = bfs()
+                    print(blocked_cells)
                 elif event.key == pygame.K_b:
                     path = dfs()
                 elif event.key == pygame.K_c:
